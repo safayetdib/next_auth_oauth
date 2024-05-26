@@ -21,14 +21,20 @@ const page = async () => {
 				/ Dashboard
 			</h1>
 			<div className='flex flex-col items-center justify-center gap-4 p-4 border rounded w-full max-w-sm'>
-				<Image
-					src={session?.user?.image as string}
-					alt={session?.user?.name as string}
-					width={72}
-					height={72}
-					className='rounded-full'
-				/>
-				<h2 className='text-3xl font-bold'>{session?.user?.name}</h2>
+				{session?.user?.image && session?.user?.name ? (
+					<>
+						<Image
+							src={session?.user?.image as string}
+							alt={session?.user?.name as string}
+							width={72}
+							height={72}
+							className='rounded-full'
+						/>
+						<h2 className='text-3xl font-bold'>{session?.user?.name}</h2>
+					</>
+				) : (
+					<h2 className='text-3xl font-bold'>{session?.user?.email}</h2>
+				)}
 				<Logout />
 			</div>
 		</main>
